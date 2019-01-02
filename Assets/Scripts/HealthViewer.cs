@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HealthViewer : MonoBehaviour
+public class HealthViewer : MonoBehaviour, IHealthObserver
 {
     [SerializeField] private HealthBar bar;
 

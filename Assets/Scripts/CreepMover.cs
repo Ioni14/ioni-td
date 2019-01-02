@@ -1,19 +1,26 @@
 ﻿using UnityEngine;
 
-public class CreepMover : MonoBehaviour
+public class CreepMover : MonoBehaviour, IHealthObserver
 {
     [SerializeField] [Tooltip("In wu/seconds")] private float baseSpeed;
 
     private CreepManager creepManager;
     private WaypointManager waypointManager;
+    
+    private Health healthComponent;
 
     private int nextWaypointIndex;
     private float currentSpeed;
-
+    
     private void Awake()
     {
         creepManager = FindObjectOfType<CreepManager>();
         waypointManager = FindObjectOfType<WaypointManager>();
+        
+        healthComponent = GetComponent<Health>();
+        if (healthComponent) {
+            healthComponent.SubscribeViewer(this);
+        }
     }
 
     private void Start()
@@ -50,7 +57,19 @@ public class CreepMover : MonoBehaviour
 
     private void FinishPath()
     {
-        Debug.Log("Finish!");
+        creepManager.RemoveCreep(gameObject);
+    }
+
+    public void OnHealthChanged(Health health)
+    {
+        if (health.IsDead()) {
+            Kill();
+        }
+    }
+
+    private void Kill()
+    {
+        // TODO : do something before Destroy ? VFX, sound, death animation
         creepManager.RemoveCreep(gameObject);
     }
 }

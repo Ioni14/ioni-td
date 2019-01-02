@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
 
     [SerializeField] private int currentHealth;
 
-    private List<HealthViewer> viewers = new List<HealthViewer>();
+    private List<IHealthObserver> viewers = new List<IHealthObserver>();
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
         return currentHealth / (float) maxHealth;
     }
 
-    public void SubscribeViewer(HealthViewer viewer)
+    public void SubscribeViewer(IHealthObserver viewer)
     {
         viewers.Add(viewer);
     }
@@ -50,13 +50,10 @@ public class Health : MonoBehaviour
         
         currentHealth = Mathf.Max(0, currentHealth - (int) damage);
         FireHealthChanged();
+    }
 
-        if (currentHealth <= 0) {
-            // TODO : do something before Destroy ? VFX, sound, death animation
-            
-            // TODO : change SubscribeViewer with an Interface HealthObserver (implemented by HealthViewer and CreepMover)
-            // TODO : CreepMover manages the death of the Creep
-            Destroy(gameObject);
-        }
+    public bool IsDead()
+    {
+        return currentHealth <= 0;
     }
 }

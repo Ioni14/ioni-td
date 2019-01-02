@@ -368,6 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74fccd3cf602f234db24bb534d330c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bypassEditor: 0
+  buildSize: {x: 2, y: 2}
   baseRange: 3
   baseAttackCooldown: 1
   projectilePrefab: {fileID: 66265269103373074, guid: df27ff061b1ea924f8c532e00c7b3a38,
