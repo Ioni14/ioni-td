@@ -33,7 +33,6 @@ public class ProjectileMover : MonoBehaviour
         
         // close to target ?
         if (Vector2.Distance(target.transform.position, transform.position) < 0.5) {
-            Debug.Log("Pan!");
             targetHealth.ReceiveDamage(ComputeOutDamage());
             Destroy(gameObject);
         }

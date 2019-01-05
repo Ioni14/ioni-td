@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4866867823619345809}
   - component: {fileID: 5553714459014292000}
+  - component: {fileID: 1932676541}
   m_Layer: 0
   m_Name: CreepSpawner
   m_TagString: Untagged
@@ -43,3 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea110e37086fde4392200a3a21e17de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creeps: []
+--- !u!114 &1932676541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2712119567099083601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55736e04ffab80d4b8df0120587d0dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointManager: {fileID: 0}
+  waves:
+  - {fileID: 11400000, guid: 850e44ee53a59ff438b5dd083d8126fe, type: 2}
+  - {fileID: 11400000, guid: 6523942bd7010c9469d8697fa19389c2, type: 2}
+  timeBetweenWaves: 5
