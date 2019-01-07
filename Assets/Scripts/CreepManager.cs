@@ -5,6 +5,8 @@ public class CreepManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> creeps = new List<GameObject>();
 
+    private List<GameObject> creepsToDestroy = new List<GameObject>();
+    
     private void Start()
     {
         // Only if there are creeps already spawned
@@ -23,9 +25,16 @@ public class CreepManager : MonoBehaviour
         creeps.Add(creep);
     }
 
+    private void LateUpdate()
+    {
+        foreach (var creep in creepsToDestroy) {
+            creeps.Remove(creep);
+            Destroy(creep); // TODO : delay this
+        }
+    }
+
     public void RemoveCreep(GameObject creep)
     {
-        creeps.Remove(creep);
-        Destroy(creep);
+        creepsToDestroy.Add(creep);
     }
 }

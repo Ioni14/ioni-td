@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TowerBuilder : MonoBehaviour
@@ -56,7 +55,7 @@ public class TowerBuilder : MonoBehaviour
         if (ghostTower) {
             var worldMousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             var towerCellPos = ToGridPosition(worldMousePos);
-            
+
 //            ghostTower.transform.position = ComputeTowerWorldPosition(ghostSpriteRenderer, ghostTower, towerCellPos);
             ghostTower.transform.position = ToWorldPosition(towerCellPos);
             if (!CanPlaceTowerHere(ghostTower, towerCellPos)) {
@@ -77,7 +76,7 @@ public class TowerBuilder : MonoBehaviour
             CancelSelection();
         }
     }
-    
+
     // TODO : ComputeTowerCellPosition
 //    private Vector2 ComputeTowerWorldPosition(SpriteRenderer towerSpriteRenderer, BasicTower tower, Vector2Int towerCellPos)
 //    {
@@ -179,7 +178,7 @@ public class TowerBuilder : MonoBehaviour
         return new Vector2Int(
             originCellPosition.x + buildSize.x - 1,
             originCellPosition.y + buildSize.y - 1);
-        
+
         return new Vector2Int(
             Mathf.CeilToInt(originCellPosition.x + buildSize.x / 2f) - 1,
             Mathf.CeilToInt(originCellPosition.y + buildSize.y / 2f) - 1);

@@ -1,33 +1,33 @@
 ﻿using UnityEngine;
 
-public class HealthViewer : MonoBehaviour, IHealthObserver
+public class HealthViewer : MonoBehaviour, IStatsObserver
 {
     [SerializeField] private HealthBar bar;
 
-    private Health healthComponent;
+//    private Health healthComponent;
+    private UnitStats unitStatsComponent;
 
     private void Awake()
     {
         var trans = transform;
         while (trans.parent) {
-            var healthCompo = trans.parent.GetComponent<Health>();
-            if (healthCompo) {
-                healthComponent = healthCompo;
+            var unitStatsCompo = trans.parent.GetComponent<UnitStats>();
+            if (unitStatsCompo) {
+                unitStatsComponent = unitStatsCompo;
                 break;
             }
 
             trans = trans.parent;
         }
 
-        if (!healthComponent) {
+        if (!unitStatsComponent) {
             Destroy(this);
         }
-
-        healthComponent.SubscribeViewer(this);
+        unitStatsComponent.SubscribeViewer(this);
     }
 
-    public void OnHealthChanged(Health health)
+    public void OnStatsChanged(UnitStats stats)
     {
-        bar.UpdateSize(health.getPercentHealth());
+        bar.UpdateSize(stats.GetCurrentHealth() / (float) stats.GetMaxHealth());
     }
 }

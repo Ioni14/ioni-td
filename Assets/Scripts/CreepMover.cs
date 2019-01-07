@@ -1,39 +1,34 @@
 ﻿using UnityEngine;
 
-public class CreepMover : MonoBehaviour, IHealthObserver
+public class CreepMover : MonoBehaviour, IStatsObserver
 {
-    [SerializeField] [Tooltip("In wu/seconds")] private float baseSpeed;
-
     private CreepManager creepManager;
     private WaypointManager waypointManager;
     
-    private Health healthComponent;
+    private UnitStats unitStatsComponent;
 
     private int nextWaypointIndex;
-    private float currentSpeed;
     
     private void Awake()
     {
         creepManager = FindObjectOfType<CreepManager>();
         waypointManager = FindObjectOfType<WaypointManager>();
         
-        healthComponent = GetComponent<Health>();
-        if (healthComponent) {
-            healthComponent.SubscribeViewer(this);
+        unitStatsComponent = GetComponent<UnitStats>();
+        if (unitStatsComponent) {
+            unitStatsComponent.SubscribeViewer(this);
         }
     }
 
     private void Start()
     {
-        currentSpeed = baseSpeed;
-
         transform.position = waypointManager.GetStart().position;
     }
 
     private void FixedUpdate()
     {
         var nextWaypoint = waypointManager.GetWaypoint(nextWaypointIndex);
-        var step = currentSpeed * Time.fixedDeltaTime;
+        var step = unitStatsComponent.GetCurrentSpeed() * Time.fixedDeltaTime;
         
         var distance = Vector2.Distance(transform.position, nextWaypoint.position);
         var rest = step;
@@ -60,13 +55,13 @@ public class CreepMover : MonoBehaviour, IHealthObserver
         creepManager.RemoveCreep(gameObject);
     }
 
-    public void OnHealthChanged(Health health)
+    public void OnStatsChanged(UnitStats stats)
     {
-        if (health.IsDead()) {
-            Kill();
+        if (stats.IsDead()) {
+            Kill(); // TODO : move this shit
         }
     }
-
+    
     private void Kill()
     {
         // TODO : do something before Destroy ? VFX, sound, death animation

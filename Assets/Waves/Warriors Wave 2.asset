@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Warriors Wave 2
   m_EditorClassIdentifier: 
   timeBetweenSpawns: 1
-  countCreeps: 3
+  countCreeps: 5
   creepPrefab: {fileID: 6113513506921365439, guid: 35686617ff5a57344a83f280972171ae,
     type: 3}

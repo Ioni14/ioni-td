@@ -2,11 +2,12 @@
 
 public class CreepSpawner : MonoBehaviour
 {
-    [SerializeField] private WaypointManager waypointManager;
-    [SerializeField] private CreepManager creepManager;
     [SerializeField] private CreepWave[] waves;
     [SerializeField] private float timeBetweenWaves = 5f;
 
+    private WaypointManager waypointManager;
+    private CreepManager creepManager;
+    
     private int currentWaveIndex;
     private float currentCooldownCreep;
     private int countWaveSpawnedCreeps;

@@ -285,8 +285,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6113513506921365437}
   - component: {fileID: 6113513506921365436}
-  - component: {fileID: 6113513506921365434}
   - component: {fileID: 1188831883256543168}
+  - component: {fileID: 4921303507560861980}
   m_Layer: 0
   m_Name: Creep
   m_TagString: Untagged
@@ -357,20 +357,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6113513506921365434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6113513506921365439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcabb1e5ae859994585c542d54eb2579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
 --- !u!114 &1188831883256543168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,7 +369,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d30468d65f6935429253a15e1898257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 2.5
+--- !u!114 &4921303507560861980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6113513506921365439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691acfd614af44a9a652ac8b966b4f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  maxSpeed: 2
+  strengh: 0
+  intelligence: 0
+  percentCritic: 0
+  damageCritic: 0
+  bonusDmgPhysic: 0
+  bonusDmgFire: 0
+  bonusDmgIce: 0
+  bonusDmgShadow: 0
+  bonusDmgLight: 0
+  bonusDmgNature: 0
+  resistPhysic: 0
+  resistFire: 0
+  resistIce: 0
+  resistShadow: 0
+  resistLight: 0
+  resistNature: 0
 --- !u!1 &6113513507119830916
 GameObject:
   m_ObjectHideFlags: 0
